@@ -7,12 +7,12 @@
          <div>
             <NavBar />
             <HeroSection />
-            <ServicesSection />
+            <EducationSection />
+            <CertificatesSection />
             <AboutSection />
             <ExperienceAndSkills />
             <LatestProjSection />
             <ContactSection />
-            <TestimonialsSection />
             <Footer />
             <BackToTop />
       </div>
@@ -31,9 +31,9 @@
 //Import Components Asynchronously
 const NavBar = defineAsyncComponent(()=>import('@/components/NavBar.vue'));
 const HeroSection = defineAsyncComponent(()=>import('@/components/HeroSection.vue'));
-const ServicesSection = defineAsyncComponent(()=>import('@/components/ServicesSection.vue'));
+const EducationSection = defineAsyncComponent(()=>import('@/components/EducationSection.vue'));
+const CertificatesSection = defineAsyncComponent(()=>import('@/components/CertificatesSection.vue'));
 const AboutSection = defineAsyncComponent(()=>import('@/components/AboutSection.vue'));
-const TestimonialsSection = defineAsyncComponent(()=>import('@/components/TestimonialsSection.vue'));
 const LatestProjSection = defineAsyncComponent(()=>import('@/components/LatestProjSection.vue'));
 const ExperienceAndSkills = defineAsyncComponent(()=>import('@/components/ExperienceAndSkills.vue'));
 const ContactSection = defineAsyncComponent(()=>import('@/components/ContactSection.vue'));

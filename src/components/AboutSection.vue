@@ -1,72 +1,34 @@
-<template >
+<template>
     <section class="text-white mt-18" id="about">
-        <div class="absolute z-0 top-[93rem] inset-x-0 h-64 flex items-start">
-            <div class="h-24 w-64 bg-gradient-to-br from-primary via-secondary blur-2xl to-[#570cac] opacity-20"></div>
-        </div>
-        <div class="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16 z-1">
-            <div data-aos="flip-right">
-                <h2 class="text-4xl font-bold text-white text-left mb-8">My Education</h2>
-                <div class="space-y-8 py-8">
-                    <div v-for="element in education" :key="element.id"
-                    class="flex items-center md:w-[80%] w-full rounded-xl bg-[#111a3e] shadow-lg border border-[#1f1641]"
-                    >
-                        <div class="w-1/4">
-                            <img src="https://img.icons8.com/ios-glyphs/60/ffffff/graduation-cap--v1.png" alt="graduation-cap--v1">
-                        </div>
-                        <div class="w-3/4 pl-4">
-                            <h3 class="text-2xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary lg:text-xl">
-                                {{ element.School }}
-                            </h3>
-                            <p class="text-white">{{ element.program }}</p>
-                            <p class="text-white">{{ element.year }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 sm:py-16 xl:px-16">
             <div class="mt-4 md:mt-0 text-left flex flex-col z-10 h-full" data-aos="flip-right">
-                <h2 class="text-4xl font-bold text-white md:text-center text-left mb-4">More
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">About</span>
-                    Me
-                </h2>
-                <p class="text-base lg:text-lg mt-8 py-8"> Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                     Qui facere libero cupiditate fugit minima voluptates numquam est eos voluptate saepe
-                      eius amet harum provident accusamus omnis sit in cum incidunt dolorum, necessitatibus 
-                      illo reiciendis ipsam debitis velit! Itaque officia architecto fugit, cum dolorum eos dolore 
-                      quaerat quis nobis id similique!
+                <SectionHeading title="Plus" highlight="A propos" suffix="de moi" />
+                <p class="text-base lg:text-lg mt-8 py-8">
+                    Je suis un developpeur web junior front-end passionné par les interfaces claires et les experiences
+                    utilisateur simples. J'aime transformer des maquettes en interfaces rapides, accessibles et
+                    bien structurées.
                 </p>
                 <div class="grid grid-cols-3 gap-4 max-w-lg pt-8">
-                    <div class="text-center rounded-xl bg-[#111a3e] shadow-lg border border-[#1f1641] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+200</h3>
-                        <p class="text-sm sm:text-base text-gray-300">Happy Client</p>
-                    </div>
-                    <div class="text-center rounded-xl bg-[#111a3e] shadow-lg border border-[#1f1641] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+300</h3>
-                        <p class="text-sm sm:text-base text-gray-300">Project</p>
-                    </div>
-
-                    <div class="text-center rounded-xl bg-[#111a3e] shadow-lg border border-[#1f1641] p-3">
-                        <h3 class="text-white font-bold text-xl sm:text-2xl lg:text-3xl">+7</h3>
-                        <p class="text-sm sm:text-base text-gray-300"> Years Experience</p>
-                    </div>
+                    <StatCard v-for="stat in stats" :key="stat.label" :value="stat.value" :label="stat.label" />
+                </div>
+            </div>
+            <div class="flex justify-center items-center" data-aos="flip-left">
+                <div class="w-64 h-64 sm:w-72 sm:h-72 rounded-full border border-primary p-2">
+                    <img src="@/assets/AboutPicture.png" alt="Portrait" class="w-full h-full rounded-full object-cover">
                 </div>
             </div>
         </div>
     </section>
 </template>
+
 <script setup>
 import { ref } from 'vue';
-const education=ref([
-    {
-        id:1,
-        School:'school 1',
-        program:'Software Engineer',
-        year:'2022'
-    },
-    {
-        id:2,
-        School:'school 2',
-        program:'Software Engineer',
-        year:'2020'
-    }
-])
+import SectionHeading from '@/components/molecules/SectionHeading.vue';
+import StatCard from '@/components/molecules/StatCard.vue';
+
+const stats = ref([
+    //{ value: '+20', label: 'Clients satisfaits' },
+    { value: '+2', label: 'Projets' },
+    { value: '+1', label: 'Ans d experience' }
+]);
 </script>

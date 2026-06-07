@@ -2,9 +2,9 @@
     <section class="text-white mt-20" id="projects">
         <div class="px-4 xl:pl-16">
             <div class="mb-4 md:flex md:justify-between xl:pr-16">
-                <h2 class="text-4xl font-bold text-white"> My Latest Projects</h2>
+                <SectionHeading title="Mes" highlight="projets" suffix="recents" />
                 <div class="flex space-x-4 mb-4 mt-5 md:mt-0">
-                    <button class="hover:text-primary" v-for="category in ['all', 'web development', 'Mobile App']"
+                    <button class="hover:text-primary" v-for="category in ['tous', 'developpement web', 'application mobile']"
                         :key="category" @click="() => selectedCategory = category">
                         {{ category }}
                     </button>
@@ -59,72 +59,74 @@
 <script setup>
 import { ref, computed } from 'vue';
 
+import SectionHeading from '@/components/molecules/SectionHeading.vue';
+
 const Projects = ref([
     {
         id: 1,
-        category: 'web development',
+        category: 'developpement web',
         image: 'src/assets/project.png',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
+        title: 'Plateforme e-commerce',
+        description: 'Boutique en ligne avec panier, paiement et gestion des produits.',
+        technologies: ['vue.js 3', 'pinia', 'express'],
         gitURL: '',
         webURL: ''
     },
+    /* {
+        id: 2,
+        category: 'application mobile',
+        image: 'src/assets/mobile.jpg',
+        title: 'Application mobile',
+        description: 'Application mobile pour le suivi des taches quotidiennes.',
+        technologies: ['vue.js 3', 'capacitor'],
+        gitURL: '',
+        webURL: ''
+    }, */
     {
         id: 2,
-        category: 'Mobile App',
-        image: 'src/assets/mobile.jpg',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
+        category: 'developpement web',
+        image: 'src/assets/project.png',
+        title: 'Dashboard analytics',
+        description: 'Tableau de bord pour la visualisation des donnees.',
+        technologies: ['vue.js 3', 'chart.js'],
         gitURL: '',
         webURL: ''
     },
+    /* {
+        id: 4,
+        category: 'application mobile',
+        image: 'src/assets/mobile.jpg',
+        title: 'Agenda et rappels',
+        description: 'Gestion des evenements et notifications.',
+        technologies: ['vue.js 3', 'firebase'],
+        gitURL: '',
+        webURL: ''
+    }, */
     {
         id: 3,
-        category: 'web development',
+        category: 'developpement web',
         image: 'src/assets/project.png',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
+        title: 'Portfolio',
+        description: 'Site vitrine personnel avec sections dynamiques.',
+        technologies: ['vue.js 3', 'vite'],
         gitURL: '',
         webURL: ''
     },
-    {
-        id: 4,
-        category: 'Mobile App',
-        image: 'src/assets/mobile.jpg',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
-        gitURL: '',
-        webURL: ''
-    },
-    {
-        id: 5,
-        category: 'web development',
-        image: 'src/assets/project.png',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
-        gitURL: '',
-        webURL: ''
-    },
-    {
+    /* {
         id: 6,
-        category: 'Mobile App',
+        category: 'application mobile',
         image: 'src/assets/mobile.jpg',
-        title: 'project 1',
-        description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic tenetur quasi ipsam labore sapiente, accusamus necessitatibus laboriosam non voluptas inventore deserunt dolore modi ex, praesentium at provident nihil magni ratione!',
-        technologies: ['vue.js 3', 'vuex', 'Express'],
+        title: 'Suivi budget',
+        description: 'Application pour suivre les depenses.',
+        technologies: ['vue.js 3', 'localstorage'],
         gitURL: '',
         webURL: ''
-    }
+    } */
 ]);
 
-const selectedCategory = ref('all');
+const selectedCategory = ref('tous');
 const filteredProjects = computed(() => {
-    if (selectedCategory.value === 'all') {
+    if (selectedCategory.value === 'tous') {
         return Projects.value;
     }
     return Projects.value.filter(project => project.category.toLocaleLowerCase() === selectedCategory.value.toLocaleLowerCase());

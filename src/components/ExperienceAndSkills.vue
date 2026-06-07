@@ -1,6 +1,6 @@
 <template>
-    <section class="text-white mt-18" id="skills">
-        <div class="absolute right-0 top-[110rem] h-full w-full justify-end">
+    <section class="text-white mt-18 relative" id="skills">
+        <div class="absolute right-0 top-0 h-full w-full justify-end">
             <span class="flex opacity-20">
                 <span class="w-16 h-32 rounded-l-full flex bg-primary blur-2xl"></span>
                 <span class="w-16 h-32 rounded-r-full flex bg-[#f88fc2] blur-2xl mt-14"></span>
@@ -8,38 +8,21 @@
         </div>
         <div class="md:grid md:grid-cols-2 gap-8 items-center py-8 px-4 xl:gap-16 xl:px-16">
             <div class="mt-4 md:mt-0 text-left flex flex-col z-10 h-full w-[80%]">
-                <h2 class="text-4xl font-bold text-white text-left mb-4">My 
-                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Skills</span>
-                </h2>
-                <div class="mt-8" v-for="skill in Skills" :key="skill.id">
-                    <div class="flex items-end justify-between" data-aos="fade-right">
-                        <h4 class="font-semibold uppercase text-white">
-                            {{ skill.name }}
-                        </h4>
-                        <h3 class="text-2xl font-bold text-white">{{ skill.width }}</h3>
-                    </div>
-                    <div class="mt-2 h-1 w-full bg-[#131d30] rounded-full">
-                        <div class="h-1 rounded-full bg-primary" :style="`width :${skill.width}`"></div>
-                    </div>
-                </div>
+                <SectionHeading title="Competences" highlight="techniques" />
+                <SkillBar v-for="skill in skills" :key="skill.id" :label="skill.name" :value="skill.width" />
             </div>
             <div data-aos="flip-left">
-                <h2 class="text-4xl font-bold text-white text-left mb-8 md:text-center md:mt-0 mt-8">My Experiences</h2>
+                <SectionHeading title="Experiences" highlight="professionnelles" align="center" />
                 <div class="space-y-8 py-8" data-aos="fade-left">
-                    <div v-for="element in Experinces" :key="element.id"
-                    class="flex  items-center rounded-xl p-4 bg-[#111a3e] shadow-lg border border-[#1f1641]"
-                    >
-                    <div class="w-1/4">
-                        <img src="https://img.icons8.com/ios-filled/100/ffffff/lawyer.png" alt="lawyer">
-                    </div>
-                    <div class="w-3/4 pl-4">
-                        <h3 class="text-2xl font-semibold uppercase text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                            {{ element.role }}
-                        </h3>
-                        <p class="text-white">{{ element.company }}</p>
-                        <p class="text-white">{{ element.date }}</p>
-                    </div>
-                </div>
+                    <InfoCard
+                        v-for="element in experiences"
+                        :key="element.id"
+                        :icon="element.icon"
+                        :icon-alt="element.iconAlt"
+                        :title="element.role"
+                        :subtitle="element.company"
+                        :meta="element.date"
+                    />
                 </div>
             </div>
         </div>
@@ -47,41 +30,62 @@
 </template>
 <script setup>
 import { ref } from 'vue';
-const Skills =ref([
+import SectionHeading from '@/components/molecules/SectionHeading.vue';
+import SkillBar from '@/components/molecules/SkillBar.vue';
+import InfoCard from '@/components/molecules/InfoCard.vue';
+
+const skills = ref([
     {
-        id:1,
-        name:'HTmL & CSS',
-        width:'85%'
+        id: 1,
+        name: 'HTML & CSS',
+        width: '85%'
     },
     {
-        id:2,
-        name:'Python',
-        width:'70%'
+        id: 2,
+        name: 'Vue.js',
+        width: '45%'
     },
     {
-        id:3,
-        name:'JavaScript',
-        width:'98%'
+        id: 3,
+        name: 'JavaScript',
+        width: '65%'
     },
     {
-        id:4,
-        name:'figma',
-        width:'91%'
+        id: 4,
+        name: 'Figma',
+        width: '35%'
     },
+    {
+        id: 5,
+        name: 'Git',
+        width: '50%'
+    }
 ]);
 
-const Experinces =ref([
+const experiences = ref([
     {
-        id:1,
-        role:'Software Engineer',
-        company:'Microsoft',
-        date:'Mar 2023 - September 2024'
+        id: 1,
+        role: 'Plateforme e-commerce',
+        company: 'Boutique en ligne avec panier, paiement et gestion des produits.',
+        date: 'Tech: vue.js 3, pinia, express',
+        icon: 'https://img.icons8.com/ios-filled/100/ffffff/lawyer.png',
+        iconAlt: 'experience icon'
     },
     {
-        id:2,
-        role:'Frontend Developer',
-        company:'Spotify',
-        date:'Mar 2022 - September 2023'
+        id: 2,
+        role: 'Application mobile',
+        company: 'Application mobile pour le suivi des taches quotidiennes.',
+        date: 'Tech: vue.js 3, capacitor',
+        icon: 'https://img.icons8.com/ios-filled/100/ffffff/lawyer.png',
+        iconAlt: 'experience icon'
     },
-])
+    {
+        id: 3,
+        role: 'Dashboard analytics',
+        company: 'Tableau de bord pour la visualisation des donnees.',
+        date: 'Tech: vue.js 3, chart.js',
+        icon: 'https://img.icons8.com/ios-filled/100/ffffff/lawyer.png',
+        iconAlt: 'experience icon'
+    }
+]);
 </script>
